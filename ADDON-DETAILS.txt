@@ -1,0 +1,111 @@
+DONG SOLAR LIVE CHAT - ADD-ON DETAILS
+Version: 1.1.50
+Author: Dong Solar Limited
+Documentation date: 23 October 2026
+Module folder: donglivechat
+
+PURPOSE
+Dong Solar Live Chat adds a storefront chat widget and a PrestaShop back-office
+dashboard for customer conversations, visitor monitoring and lead management.
+This description was prepared from the supplied version 1.1.50 source code.
+
+STOREFRONT CHAT
+- Floating chat launcher, configurable on the left or right side of the shop.
+- Visitors can send messages and receive operator replies without leaving a page.
+- Chat panel supports minimizing, maximizing and closing, with an unread badge.
+- Operator messages can open the visitor chat panel automatically.
+- Shows the replying employee's name and an existing employee photo, or initials.
+- Visitor session identifiers are held in browser session storage; this is
+  session-based tracking, not a guaranteed count of distinct people.
+- Message polling runs every four seconds while the storefront tab is visible;
+  visitor presence and current-page heartbeats run every twenty seconds.
+
+BACK-OFFICE INBOX AND NOTIFICATIONS
+- Live Chat menu under Customers and an inbox shortcut in module configuration.
+- Operators can select a visitor, inspect the conversation and initiate a chat.
+- Displays visitor status, current page, page title, IP address, device/OS,
+  available city/country information, and available referral/campaign source.
+- Editable visitor name, email address, telephone number and internal notes.
+- Visitor list, selected visitor details and summary counters refresh via AJAX.
+- Optional sound alerts for new visitors and messages, desktop notifications,
+  unread message counts and a browser-title indicator.
+- Sound needs browser activation; desktop alerts need browser permission and
+  a supported browser. These are dashboard/browser alerts, not mobile push.
+
+VISITOR HISTORY, LEADS AND PAGE VISITS
+- Counters for visitors seen within the last minute and the last hour.
+- History views over seven, thirty or ninety days, with summaries by country,
+  city, device and current page, plus sessions containing conversations.
+- Searchable, paginated lead records and CSV export of lead/contact details.
+- Separate paginated page-visit history with page title, path, link and time.
+- Visit events are recorded on page changes or returns after thirty minutes,
+  rather than recording every heartbeat as a new visit.
+- External referral hostname capture and campaign-source detection from
+  utm_source or supported Google, Meta, Microsoft and TikTok click identifiers.
+  These are source hints, not a full advertising attribution or sales system.
+- City/country lookup uses an existing local GeoLite2 City database and GeoIP2
+  reader when available. No external geolocation API is called; missing local
+  dependencies or unresolvable IPs leave the location unknown.
+
+VISIBILITY AND WORKING HOURS
+- Three modes: always on, scheduled working hours, or disabled.
+- Per-day opening/closing times and enabled days; overnight shifts supported.
+- Timezone choices include Africa/Nairobi, UTC, Africa/Kampala and
+  Africa/Dar_es_Salaam.
+- The administrator inbox remains accessible in all visibility modes.
+- When storefront chat is hidden, its widget and tracking requests are also
+  unavailable; the module does not provide continuous tracking in that mode.
+
+OPTIONAL OPENAI ASSISTANT
+- AI replies are disabled by default and require a configured OpenAI API key,
+  API access/billing, PHP cURL and outbound HTTPS access to api.openai.com.
+- Configurable model and instructions; default model in this package is
+  gpt-4.1-mini. Model availability depends on the configured OpenAI account.
+- Calls the OpenAI Responses API from the server. The key is stored in
+  PrestaShop configuration and is not sent to the storefront JavaScript.
+- Uses up to twelve recent message records, omitting human operator messages,
+  and sends visitor/AI conversation content to OpenAI when enabled.
+- AI replies are identified in the storefront. No live product-catalogue,
+  inventory, pricing or order lookup integration is implemented here.
+- Default instructions describe Dong Solar support and say that Dong Solar
+  does not offer installation services. Instructions can be edited.
+- API failures may produce no AI reply; operators should monitor the inbox.
+
+DATA AND RETENTION
+- Stores visitor profiles, chat messages and page-visit events in the shop's
+  database using the configured PrestaShop table prefix.
+- Optional visitor retention: keep indefinitely, 30, 60, 90, 180 or 365 days.
+- Optional message retention: keep indefinitely, 90, 180, 365 or 730 days.
+- Cleanup is manual from the dashboard, in batches of up to 500 records per
+  category. Saving a retention period does not schedule automatic cleanup.
+- Visitor cleanup preserves profiles that still have retained messages;
+  orphaned visit records are cleaned in batches.
+- Visit-history paths omit query strings. The current-page field can include
+  query parameters, so do not assume every stored URL is stripped of queries.
+- Include tracking and optional AI processing in the shop's privacy practices.
+
+INSTALLATION AND UPGRADES
+1. Back up the shop and database; validate on a staging shop first.
+2. In PrestaShop, open Modules > Module Manager and upload the supplied
+   packages/donglivechat-v1.1.50.zip file.
+3. Configure visibility, position, working hours and any optional AI settings.
+4. Open Customers > Live Chat, or use the module's inbox shortcut.
+5. Enable sound/desktop alerts in the dashboard if wanted.
+6. For an existing installation, upgrade in place instead of uninstalling.
+   Clear the PrestaShop cache and check employee permissions if the menu is
+   missing after upgrade.
+
+The module declares compatibility with PrestaShop 9.0.0 through 9.9.9 and was
+developed for the Dong Solar PrestaShop 9.0.2 shop. This declared range is not
+evidence that every release or theme has been tested.
+
+REPOSITORY CONTENTS AND VALIDATION
+- donglivechat/: the 57 original source files extracted from the supplied ZIP.
+- packages/donglivechat-v1.1.50.zip: an unchanged copy of the supplied module ZIP.
+- ADDON-DETAILS.txt: this feature and setup description.
+- README.md: repository overview.
+
+The module source and installable archive have not been modified for this
+publication. Documentation is based on source inspection; this publication
+does not constitute a live PrestaShop test or security audit. The original
+module README contains older version notes and is retained as supplied.
