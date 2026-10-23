@@ -1,0 +1,42 @@
+#dongchat{position:fixed;right:20px;bottom:20px;z-index:99999;font-family:Arial,sans-serif}#dongchat-toggle{border:0;border-radius:28px;background:#0d4f4f;color:white;padding:15px 22px;box-shadow:0 3px 14px #0003;cursor:pointer}#dongchat-badge{color:#ffca28}#dongchat-panel{position:absolute;bottom:65px;right:0;width:min(350px,calc(100vw - 32px));height:430px;background:#fff;border-radius:14px;box-shadow:0 4px 28px #0004;overflow:hidden;display:flex;flex-direction:column}#dongchat-panel[hidden]{display:none}#dongchat-panel header{background:#0d4f4f;color:white;padding:15px;display:flex;justify-content:space-between}#dongchat-close{background:transparent;border:0;color:white;font-size:24px;cursor:pointer}#dongchat-messages{flex:1;overflow:auto;padding:12px}.dc-message{padding:10px;margin:7px 0;border-radius:10px;background:#eee;max-width:88%;white-space:pre-wrap;overflow-wrap:anywhere}.dc-message.visitor{margin-left:auto;background:#def4ed}#dongchat-form{display:flex;padding:8px;border-top:1px solid #ddd}#dongchat-input{min-width:0;flex:1;padding:9px;border:1px solid #ccc;border-radius:5px}#dongchat-form button{background:#0d4f4f;color:white;border:0;padding:9px;cursor:pointer}#dongchat-panel small{padding:5px 10px;color:#666}
+
+/* Configurable placement: default remains right for existing shops. */
+#dongchat.dongchat-left{left:20px;right:auto}
+#dongchat.dongchat-left #dongchat-panel{left:0;right:auto}
+@media(max-width:480px){#dongchat.dongchat-left{left:12px;right:auto}#dongchat.dongchat-left #dongchat-panel{left:0;right:auto}}
+
+/* Employee identity in storefront chat header */
+#dongchat-panel header{align-items:center;gap:12px}
+#dongchat-panel .dc-agent{display:flex;align-items:center;gap:10px;min-width:0;flex:1}
+#dongchat-panel .dc-agent-avatar{height:38px;width:38px;flex:0 0 38px;border-radius:50%;background:#fff;color:#0d4f4f;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;overflow:hidden}
+#dongchat-panel .dc-agent-avatar img{height:100%;width:100%;object-fit:cover}
+#dongchat-panel .dc-agent-copy{display:flex;flex-direction:column;min-width:0;gap:3px}
+#dongchat-panel .dc-agent-copy strong{font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#dongchat-panel .dc-agent-copy small{color:#d6f4ec;padding:0;font-size:11px}
+
+/* Minimize into launcher on the same configured side as the chat panel. */
+#dongchat-panel .dc-header-actions{display:flex;align-items:center;gap:8px;flex:0 0 auto}
+#dongchat-minimize{border:0;background:transparent;color:#fff;font-size:26px;line-height:1;cursor:pointer;padding:4px 7px}
+#dongchat-panel .dc-header-actions button:focus-visible,#dongchat-toggle:focus-visible{outline:2px solid #ffca28;outline-offset:2px}
+#dongchat.dongchat-right #dongchat-panel{right:0;left:auto}
+
+/* v1.1.28: Anchor launcher and panel to the same configured edge. */
+#dongchat.dongchat-right { left:auto !important; right:20px !important; }
+#dongchat.dongchat-left { right:auto !important; left:20px !important; }
+#dongchat.dongchat-right #dongchat-panel { left:auto; right:0; }
+#dongchat.dongchat-left #dongchat-panel { right:auto; left:0; }
+@media (max-width:480px) {
+ #dongchat.dongchat-right { right:12px !important; left:auto !important; }
+ #dongchat.dongchat-left { left:12px !important; right:auto !important; }
+}
+
+/* v1.1.29: Keep chat launcher above the cookie-preferences floating control.
+   Move the entire widget upward so launcher and panel remain aligned. */
+#dongchat { bottom:92px !important; z-index:2147483000 !important; }
+@media (max-width:480px) { #dongchat { bottom:88px !important; } }
+
+/* v1.1.34: Expand/restore the visitor chat panel without changing its anchor side. */
+#dongchat-maximize{border:0;background:transparent;color:#fff;font-size:22px;line-height:1;cursor:pointer;padding:4px 7px}
+#dongchat-maximize:focus-visible{outline:2px solid #ffca28;outline-offset:2px}
+#dongchat #dongchat-panel.dc-maximized{width:min(680px,calc(100vw - 40px));height:min(760px,calc(100dvh - 180px));max-height:calc(100dvh - 180px)}
+@media(max-width:480px){#dongchat #dongchat-panel.dc-maximized{width:calc(100vw - 24px);height:calc(100dvh - 164px);max-height:calc(100dvh - 164px)}}
